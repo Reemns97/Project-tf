@@ -42,12 +42,13 @@ spec:
   }
   stages {
       stage("init") {
-         container('kubectl') {
-          steps {
-              sh 'make init'
+            steps {
+               container('dnd') {
+                sh 'make init'
           }
       }
       }
+  }
       stage("plan") {
           steps {
               sh 'make plan'

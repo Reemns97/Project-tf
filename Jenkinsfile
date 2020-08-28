@@ -48,7 +48,6 @@ spec:
               }
           }
       }
-   }
       stage("plan") {
           steps {
               sh 'make plan'

@@ -40,15 +40,15 @@ spec:
     AWS_PROFILE="kh-labs"
     TF_NAMESPACE="rawan"
   }
-  stages {
+   stages {
       stage("init") {
-            steps {
-               container('dnd') {
-                sh 'make init'
+          steps {
+              container('kubectl') {
+                   sh 'make init'
+              }
           }
       }
-      }
-  }
+   }
       stage("plan") {
           steps {
               sh 'make plan'

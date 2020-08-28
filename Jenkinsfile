@@ -6,14 +6,28 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    some-label: some-label-value
+    service_name: department-service
+    service_type: REST
 spec:
   containers:
-  - name: packer
-    image: hashicorp/packer 
+  - name: dnd
+    image: docker:latest
     command: 
-    - bash
+    - cat
     tty: true
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: docker-sock
+  - name: kubectl
+    image: bryandollery/terraform-packer-aws-alpine
+    command:
+    - cat
+    tty: true
+  volumes:
+  - name: docker-sock
+    hostPath:
+      path: /var/run/docker.sock  
+      type: Socket
 """
     }
   }

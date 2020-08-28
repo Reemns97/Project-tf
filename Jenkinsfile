@@ -42,9 +42,11 @@ spec:
   }
   stages {
       stage("init") {
+         container('kubectl') {
           steps {
               sh 'make init'
           }
+      }
       }
       stage("plan") {
           steps {

@@ -48,21 +48,27 @@ spec:
               }
           }
       }
-      stage("plan") {
+     stage("plan") {
           steps {
-              sh 'make plan'
+              container('kubectl') {
+                   sh 'make plan'
+              }
           }
       }
-      stage("apply") {
+     stage("apply") {
           steps {
-              sh 'make apply'
+              container('kubectl') {
+                   sh 'make apply'
+              }
           }
       }
-      stage("horrible cheat") {
-        steps {
-            sh 'cat ./ssh/id_rsa'
-            sh 'cat ./ssh/id_rsa.pub'
-        }
+     stage("horrible cheat") {
+          steps {
+              container('kubectl') {
+                    sh 'cat ./ssh/id_rsa'
+                    sh 'cat ./ssh/id_rsa.pub'
+              }
+          }
       }
   }
 }

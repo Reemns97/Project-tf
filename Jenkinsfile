@@ -15,6 +15,11 @@ pipeline {
     TF_NAMESPACE="rawan"
   }
   stages {
+      stage("make") {
+          steps {
+              sh 'make'
+          }
+      }
       stage("init") {
           steps {
               sh 'make init'

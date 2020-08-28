@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image "bryandollery/terraform-packer-aws-alpine"
-      args "-u root --entrypoint=''"
+      args "-u root --entrypoint='--rm'"
     }
   }
   environment {
@@ -15,11 +15,6 @@ pipeline {
     TF_NAMESPACE="rawan"
   }
   stages {
-      stage("make") {
-          steps {
-              sh 'make'
-          }
-      }
       stage("init") {
           steps {
               sh 'make init'

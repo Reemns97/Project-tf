@@ -126,7 +126,7 @@ data "aws_ami" "latest_sandbox" {
 }
 
 resource "aws_instance" "sandbox" {
-  ami                    = data.aws_ami.latest_sandbox.id
+  ami                    = "ami-07b99bed573a24bac"
   instance_type          = var.instance_type
   subnet_id              = aws_subnet.sandbox.id
   vpc_security_group_ids = [aws_security_group.sandbox.id]
